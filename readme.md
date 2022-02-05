@@ -7,7 +7,7 @@ This also allows for realtime updates based on DOM changes like in Chrome Extens
 ### Install:
 
 ```
-npm i superselector
+npm i super-selector
 ```
 
 ### How it works:
@@ -15,7 +15,7 @@ npm i superselector
 First import the superselector:
 
 ```
-const SuperSelector = require('superselector')
+const SuperSelector = require('super-selector')
 ```
 
 Then you can use:
@@ -26,7 +26,7 @@ SuperSelector.superSelector("queryCSS|function()", document)
 
 Or you can do like:
 
-const {findElement} = require('superselector')
+const {findElement} = require('super-selector')
 
 ## Use cases:
 
