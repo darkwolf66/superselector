@@ -1,0 +1,12 @@
+{
+  "name": "super-selector",
+  "version": "1.0.0",
+  "main": "SuperSelector.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "darkwolf66",
+  "license": "ISC",
+  "description": "An eval free DOM Super Selector who simplifies the process of Scraping for Chrome Extensions by combining prop access and function executing via string together with the CSS Selector."
+}
