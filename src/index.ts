@@ -188,5 +188,5 @@ export interface LegacyParsedArrayPositionCommand {
 export type LegacyQueryableElement = Document | Element
 export type LegacySelectorTarget = any | any[]
 
-export { SuperSelector } from './super-selector';
+export { SuperSelector } from './core/super-selector';
 
