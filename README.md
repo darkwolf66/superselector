@@ -36,13 +36,13 @@ SuperSelector V2 is a **complete architectural rewrite** that transforms the lib
 
 ### Installation
 
-\`\`\`bash
+```bash
 npm install super-selector
-\`\`\`
+```
 
 ### Basic Usage
 
-\`\`\`typescript
+```typescript
 import { SuperSelector } from 'super-selector'
 
 // V2 Instance API (Recommended)
@@ -52,7 +52,7 @@ const result = await selector.execute("div.content | textContent | trim()", docu
 // V1 Compatibility API (Still works)
 const text = await SuperSelector.superSelector("div.content | textContent", document)
 const element = await SuperSelector.findElement("div.my-class", document)
-\`\`\`
+```
 
 ---
 
@@ -62,13 +62,13 @@ const element = await SuperSelector.findElement("div.my-class", document)
 
 SuperSelector uses a pipe-based syntax to chain operations:
 
-\`\`\`typescript
+```typescript
 "CSS_SELECTOR | PROPERTY_ACCESS | FUNCTION_CALL | ARRAY_ACCESS"
-\`\`\`
+```
 
 ### Examples
 
-\`\`\`typescript
+```typescript
 // CSS Selector → Property Access
 "div.user-info | textContent"
 
@@ -80,7 +80,7 @@ SuperSelector uses a pipe-based syntax to chain operations:
 
 // Built-in Helper Functions
 "div.items | getProp('dataset') | p('itemId')"
-\`\`\`
+```
 
 ---
 
@@ -88,7 +88,7 @@ SuperSelector uses a pipe-based syntax to chain operations:
 
 ### Configuration
 
-\`\`\`typescript
+```typescript
 const selector = new SuperSelector({
 debug: true,                    // Enable debug logging
 cacheEnabled: true,            // Enable result caching
@@ -98,11 +98,11 @@ maxDepth: 50,                 // Maximum execution depth
 errorHandling: 'return-null', // Error handling strategy
 defaultValue: null,           // Default return value
 })
-\`\`\`
+```
 
 ### Error Handling Strategies
 
-\`\`\`typescript
+```typescript
 // Return null on errors (default)
 selector.configure({ errorHandling: 'return-null' })
 
@@ -114,11 +114,11 @@ defaultValue: 'N/A'
 
 // Throw errors
 selector.configure({ errorHandling: 'throw' })
-\`\`\`
+```
 
 ### Event System
 
-\`\`\`typescript
+```typescript
 // Listen to execution events
 selector.on('execution:start', (data) => {
 console.log('Execution started:', data.commands)
@@ -131,11 +131,11 @@ console.log('Execution completed in:', data.executionTime, 'ms')
 selector.on('execution:error', (data) => {
 console.error('Execution failed:', data.error)
 })
-\`\`\`
+```
 
 ### Caching
 
-\`\`\`typescript
+```typescript
 // Enable caching
 selector.configure({ cacheEnabled: true, cacheTTL: 30000 })
 
@@ -145,7 +145,7 @@ console.log('Cache hits:', stats.totalHits)
 
 // Clear cache
 selector.clearCache()
-\`\`\`
+```
 
 ---
 
@@ -155,7 +155,7 @@ V2 introduces a powerful plugin system for extending functionality:
 
 ### Creating a Plugin
 
-\`\`\`typescript
+```typescript
 import type { Plugin, CommandHandler } from 'super-selector'
 
 const myPlugin: Plugin = {
@@ -198,11 +198,11 @@ const result = await selector.execute(
 "div.items | customFilter('item => item.active')",
 document
 )
-\`\`\`
+```
 
 ### Plugin Management
 
-\`\`\`typescript
+```typescript
 // Load plugin
 selector.loadPlugin(myPlugin)
 
@@ -214,14 +214,14 @@ const plugins = selector.getLoadedPlugins()
 
 // List available commands
 const commands = selector.getAvailableCommands()
-\`\`\`
+```
 
 ---
 
 ## 🛠️ Built-in Commands
 
 ### Property Access
-\`\`\`typescript
+```typescript
 // Direct property access
 "element | propertyName"
 
@@ -230,28 +230,28 @@ const commands = selector.getAvailableCommands()
 
 // Alias 'p' for getProp
 "elements | p('dataset') | p('id')"
-\`\`\`
+```
 
 ### Array Operations
-\`\`\`typescript
+```typescript
 // Array access by index
 "elements | [0]"          // First element
 "elements | [-1]"         // Last element
 
 // Property access on arrays
 "elements | textContent"  // Gets textContent from all elements
-\`\`\`
+```
 
 ### String Operations
-\`\`\`typescript
+```typescript
 // Native string methods
 "element | textContent | trim()"
 "element | textContent | toLowerCase()"
 "element | getAttribute('href') | replace('http', 'https')"
-\`\`\`
+```
 
 ### Advanced Filtering
-\`\`\`typescript
+```typescript
 // Property includes (case-sensitive)
 "elements | propIncludes('className', 'active')"
 
@@ -263,7 +263,7 @@ const commands = selector.getAvailableCommands()
 
 // Recursive property access
 "element | recursiveProp('parentElement', 3)"
-\`\`\`
+```
 
 ---
 
@@ -271,7 +271,7 @@ const commands = selector.getAvailableCommands()
 
 ### Chrome Extension Content Script
 
-\`\`\`typescript
+```typescript
 import { SuperSelector } from 'super-selector'
 
 class ContentScraper {
@@ -317,11 +317,11 @@ callback(newPrice)
     })
 }
 }
-\`\`\`
+```
 
 ### Dynamic Content Monitoring
 
-\`\`\`typescript
+```typescript
 class DashboardMonitor {
 private selector = new SuperSelector({ debug: true })
 
@@ -356,11 +356,11 @@ return this.selector.execute(`
     `, document)
 }
 }
-\`\`\`
+```
 
 ### E-commerce Scraping
 
-\`\`\`typescript
+```typescript
 class EcommerceScraper {
 private selector = new SuperSelector({
 cacheEnabled: true,
@@ -407,7 +407,7 @@ window.location.href = productUrl
     }
 }
 }
-\`\`\`
+```
 
 ---
 
@@ -416,9 +416,9 @@ window.location.href = productUrl
 ### SuperSelector Class
 
 #### Constructor
-\`\`\`typescript
+```typescript
 new SuperSelector(config?: Partial<SuperSelectorConfig>)
-\`\`\`
+```
 
 #### Methods
 
@@ -453,7 +453,7 @@ Find first matching element.
 
 ### Configuration Options
 
-\`\`\`typescript
+```typescript
 interface SuperSelectorConfig {
 debug: boolean                    // Enable debug logging
 timeout: number                   // Execution timeout (ms)
@@ -465,7 +465,7 @@ defaultValue: any                 // Default value for errors
 plugins: string[]                 // Plugin names to auto-load
 customCommands: Record<string, CommandHandler>
 }
-\`\`\`
+```
 
 ---
 
@@ -473,7 +473,7 @@ customCommands: Record<string, CommandHandler>
 
 SuperSelector V2 includes comprehensive testing:
 
-\`\`\`bash
+```bash
 # Run all tests
 npm test
 
@@ -485,11 +485,11 @@ npm run test:coverage
 
 # Run specific test file
 npm test -- parser.test.ts
-\`\`\`
+```
 
 ### Writing Tests
 
-\`\`\`typescript
+```typescript
 import { SuperSelector } from 'super-selector'
 
 describe('My SuperSelector Tests', () => {
@@ -514,7 +514,7 @@ expect(result.success).toBe(true)
 expect(result.value).toBe('Hello World')
 })
 })
-\`\`\`
+```
 
 ---
 
@@ -532,29 +532,29 @@ SuperSelector V2 performance improvements over V1:
 ### Performance Tips
 
 1. **Enable Caching**: For repeated selectors
-   \`\`\`typescript
+   ```typescript
    selector.configure({ cacheEnabled: true })
-   \`\`\`
+   ```
 
 2. **Use Specific Selectors**: More specific CSS selectors are faster
-   \`\`\`typescript
+   ```typescript
    // Good
    "#container .specific-class"
 
    // Avoid
    "div div div"
-   \`\`\`
+   ```
 
 3. **Limit Scope**: Use specific elements as context
-   \`\`\`typescript
+   ```typescript
    const container = document.getElementById('main')
    selector.execute("div.item", container)
-   \`\`\`
+   ```
 
 4. **Batch Operations**: Process multiple elements together
-   \`\`\`typescript
+   ```typescript
    "ul li | p('textContent')"  // Better than individual queries
-   \`\`\`
+   ```
 
 ---
 
@@ -563,15 +563,15 @@ SuperSelector V2 performance improvements over V1:
 V2 maintains full backward compatibility with V1:
 
 ### V1 Code (Still Works)
-\`\`\`typescript
+```typescript
 import { SuperSelector } from 'super-selector'
 
 const result = SuperSelector.superSelector("div | textContent", document)
 const element = SuperSelector.findElement("div.class", document)
-\`\`\`
+```
 
 ### V2 Enhanced Usage
-\`\`\`typescript
+```typescript
 import { SuperSelector } from 'super-selector'
 
 // Create configured instance
@@ -587,7 +587,7 @@ const result = await selector.execute("div | textContent", document)
 console.log('Success:', result.success)
 console.log('Value:', result.value)
 console.log('Execution time:', result.metadata.executionTime, 'ms')
-\`\`\`
+```
 
 ### Breaking Changes
 - None! V2 is fully backward compatible
@@ -602,7 +602,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ### Development Setup
 
-\`\`\`bash
+```bash
 # Clone repository
 git clone https://github.com/darkwolf66/super-selector.git
 cd super-selector
@@ -618,7 +618,7 @@ npm run build
 
 # Start development mode
 npm run dev
-\`\`\`
+```
 
 ### Plugin Development
 
