@@ -596,6 +596,12 @@ console.log('Execution time:', result.metadata.executionTime, 'ms')
 
 ---
 
+## ☕ Support My Work
+
+If you find SuperSelector useful, consider supporting me on [Buy Me a Coffee](https://buymeacoffee.com/darkwolf66).
+
+---
+
 ## 🤝 Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
@@ -650,8 +656,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ## 📞 Support
 
 - **Issues**: [GitHub Issues](https://github.com/darkwolf66/super-selector/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/darkwolf66/super-selector/discussions)
-- **Email**: support@superselector.dev
+- **Email**: darkwolfwbm@gmail.com
 
 ---
 
